@@ -28,7 +28,7 @@ public class MealEndpoint {
     Meal createMeal(@RequestBody Meal meal) {
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd llll yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd LLLL yyyy");
 
         String format = dateFormat.format(dateOfEvent);
         meal.setDateTime(format);
@@ -50,7 +50,6 @@ public class MealEndpoint {
     @GetMapping("/mealdetail/{id}")
     Meal detailPage(@PathVariable("id") String id) {
         return mealRepository.findById(id).get();
-
     }
 
     @GetMapping("/mealdetail/ingredients/{id}")
